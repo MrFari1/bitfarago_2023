@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d");
 let radius = canvas.height / 2;
 ctx.translate(radius, radius);
 radius = radius * 0.90
-setInterval(drawClock, 1000);
+setInterval(drawClock, 10);
 
 function drawClock() {
   drawFace(ctx, radius);
