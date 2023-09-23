@@ -10,15 +10,36 @@
     <title>Markoló Csapat</title>
 </head>
 <body>
-    <div>
-        <p>Kiss Máté</p>
+    <div class="emberek">
+        <div>
+            <img src="kepek/mate_avatar.jpg">
+            <br>
+            <button class="btn btn-warning" id="ember1"onclick=popup(this)>Kiss Máté</button>
+            <div class="popup">
+                <span class="popuptext" id="1">Kiss Máté vagyok, Dánszetmiklóson élek egy kis faluban ami Pest megyében található. A Ceglédi SZC Közgazdasági és Informatikai Technikumba járok már 4 éve.</span>
+            </div>
+        </div>
+
+        <div>
+            <img src="kepek/gema_avatar.jpg">
+            <br>
+            <button class="btn btn-warning" id="ember2" onclick=popup(this)>Gombási Márk</button>
+            <div class="popup">
+                <span class="popuptext" id="2">Gombási Márk vagyok, Dánszetmiklóson élek. Nagyon szeretek vezetni illetve a barátaimmal lenni. </span>
+                </span>
+            </div>
+        </div>
+
+        <div>
+            <img src="kepek/bence_avatar.jpg">
+            <br>
+            <button class="btn btn-warning" id="ember3" onclick=popup(this)>Farkas Bence Zsolt</button>
+            <div class="popup">
+                <span class="popuptext" id="3">Farkas Bence vagyok, Cegléd külterületén élek. Hobbijaim közé tartozik a foci és egyéb sportok.</span>
+            </div>
+        </div>
     </div>
-    <div>
-        <p>Gombási János Márk</p>
-    </div>
-    <div>
-        <p>Farkas Bence</p>
-    </div>
+
     <canvas id="canvas" width="400" height="400"></canvas>
 </body>
 </html>

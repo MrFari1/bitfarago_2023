@@ -13,19 +13,19 @@ function drawClock() {
 
 function drawFace(ctx, radius) {
   const grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
-  grad.addColorStop(0, '#333');
-  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(0, '#000');
+  grad.addColorStop(0.5, '#6E6D6D'); //kulso kor
   grad.addColorStop(1, '#333');
   ctx.beginPath();
   ctx.arc(0, 0, radius, 0, 2*Math.PI);
-  ctx.fillStyle = 'white';
+  ctx.fillStyle = '#3A3A3A'; //belso resz
   ctx.fill();
   ctx.strokeStyle = grad;
   ctx.lineWidth = radius*0.1;
   ctx.stroke();
   ctx.beginPath();
   ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
-  ctx.fillStyle = '#333';
+  ctx.fillStyle = 'white'; //szamok
   ctx.fill();
 }
 
@@ -73,4 +73,11 @@ function drawHand(ctx, pos, length, width) {
     ctx.lineTo(0, -length);
     ctx.stroke();
     ctx.rotate(-pos);
+}
+
+function popup(button) {
+  let id=String(button.id)
+  id=id.slice(5)
+  var popup=document.getElementById(id)
+  popup.classList.toggle("show");
 }
