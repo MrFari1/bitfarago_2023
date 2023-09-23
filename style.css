@@ -1,0 +1,71 @@
+:root{
+    --fekete: black;
+    --feher: white;
+    --kek: blue;
+}
+#carouselExampleInterval{
+    width: 1350px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 25px 25px 25px 25px;
+}
+
+.search{
+    width: 50% !important;
+}
+
+.filterek{
+    display: flex;
+    justify-content: space-evenly;
+    visibility: hidden;
+}
+
+.carousel-control-prev-icon{
+    background-color: var(--fekete) !important;
+    border-radius: 50px 0px 0px 50px;
+}
+.carousel-control-next-icon{
+    background-color: var(--fekete) !important;
+    border-radius: 0px 50px 50px 0px;  
+}
+.flex-container{
+    height: 100%;
+    padding: 0;
+    padding-top: 50px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+@media only screen and (max-width: 542px) {
+}
+video {
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+  .video-wrapper {
+    border: 2px solid var(--fekete);
+    width: 200px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    margin: 5px;
+    border-radius: 25px 25px 25px 25px;
+  }
+  .header{
+    position: relative;
+    color: var(--feher);
+    text-shadow: 1px 1px 8px var(--fekete);
+  }
+
