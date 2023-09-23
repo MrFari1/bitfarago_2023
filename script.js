@@ -8,7 +8,7 @@ class Film{
 
 const filmObj={
     1:"The Shawshank Redemption;1994;dráma,bűnözés",
-    2:"Pulp Fiction;1994;,dráma,bűnözés",
+    2:"Pulp Fiction;1994;dráma,bűnözés",
     3:"Inception;2010;sci-fi,akció,thriller",
     4:"The Godfather;1972;bűnözés,dráma",
     5:"The Dark Knight;2008;akció,bűnözés,dráma",
@@ -24,6 +24,8 @@ const filmObj={
     15:"La La Land;2016;musical,dráma,romantikus"
 }
 
+var jo=new Array();
+var nemjo=new Array();
 const filmek=new Array();
 
 for (let index = 1; index < 16; index++) {
@@ -33,19 +35,113 @@ for (let index = 1; index < 16; index++) {
 
 document.getElementsByTagName("input")[0].addEventListener("input",updateKereses);
 document.getElementsByTagName("input")[1].addEventListener("input",updateFilter);
+document.getElementById("search").addEventListener("click",mainKereses);
+
+
+for (let index = 0; index < 2; index++) {
+    document.getElementsByClassName("dropdown-menu")[index].appendChild
+}
+
+function filteredSearch(){
+    for (let index = 0; index < 11; index++) {
+        let curr=document.getElementsByClassName("dropdown-menu")[0].children[index].children[0].children[0]
+        if (curr.checked) {
+            jo.push(curr.value)   
+        }
+    }
+    for (let index = 0; index < 11; index++) {
+        let curr=document.getElementsByClassName("dropdown-menu")[1].children[index].children[0].children[0]
+        if (curr.checked) {
+            nemjo.push(curr.value)   
+        }
+    }
+}
+
+
+function createFragment(img,nev) {
+    let fragment=new DocumentFragment();
+    let div=document.createElement("div")
+    div.id="filmCucc"
+    let kepdiv=document.createElement("div")
+    kepdiv.id="filmKep"
+    kepdiv.style.backgroundImage="url('kepek/"+img+".jpg"
+    let h2=document.createElement("h4")
+    h2.innerHTML=nev
+    div.appendChild(kepdiv)
+    div.appendChild(h2)
+    fragment.appendChild(div)
+    return fragment;
+}
+
+
+function mainKereses() {
+    filteredSearch()
+    
+    filmek.forEach(film => {
+        if (film.Kategoria.includes(jo[0])) {
+            document.getElementById("filmek").appendChild(createFragment(film.nev.split(' ').map(word => word.charAt(0).toLowerCase())
+            .join(''),film.nev))
+            console.log(filmek.indexOf(film));
+            filmek.splice(filmek.indexOf(film),1)
+        }
+    });
+    console.log(filmek);
+    filmek.forEach(film => {
+        if (!film.Kategoria.includes(nemjo[0])) {
+            document.getElementById("filmek").appendChild(createFragment(film.nev.split(' ').map(word => word.charAt(0).toLowerCase())
+            .join(''),film.nev))
+            filmek.splice(filmek.indexOf(film),1)
+        }
+    });
+    console.log(filmek);
+    filmek.forEach(film => {
+        document.getElementById("filmek").appendChild(createFragment(film.nev.split(' ').map(word => word.charAt(0).toLowerCase())
+        .join(''),film.nev))
+    });
+}
 
 function updateKereses() {
     console.log("called");
     const kereses = document.getElementsByTagName("input")[0].value.toLowerCase();
     const egyezes=filmek.filter(film=>film.nev.toLowerCase().includes(kereses));
-    console.log(egyezes);
+    if (egyezes.length==0) {
+        document.getElementById("filmek").innerHTML="{NINCS TALÁLAT"
+    } else {
+        egyezes.forEach(element => {
+            document.getElementById("filmek").innerHTML=element.nev
+        });
+    }
 }
 
 function updateFilter() {
     document.getElementsByTagName("input")[1].checked==true ? document.getElementById("dropdowndiv").hidden=false : document.getElementById("dropdowndiv").hidden=true;
 }
 
+function loadFilter(){
+    let distinct = new Array();
+    let ul = document.getElementsByClassName("dropdown-menu");
+    filmek.forEach(film => {
+        film.Kategoria.forEach(item => {
+            if(!distinct.includes(item))
+            distinct.push(item)
+    });
+});
+for (let i = 0; i < ul.length; i++) {
+    for (let j = 0; j < distinct.length; j++) {
+        let label = document.createElement("label");
+        let checkbox = document.createElement("input");
+        let li = document.createElement("li");
+        checkbox.type = "checkbox";
+        checkbox.value = distinct[j];
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(distinct[j]));
+        li.appendChild(label);
+        ul[i].appendChild(li);
+    }
+}
+console.log(distinct.length)
+}
 
-
+document.addEventListener("load",loadFilter());
 
 

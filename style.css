@@ -69,3 +69,16 @@ video {
     text-shadow: 1px 1px 8px var(--fekete);
   }
 
+#filmek{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(5,280px);
+}
+
+ 
+#filmKep{
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
