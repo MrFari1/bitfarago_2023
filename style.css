@@ -1,7 +1,39 @@
 body{
     background-image: url("kepek/bg.png");
     background-size: cover;
-    cursor:url('kepek/titleimg.png'),auto;
+    /*cursor:url('kepek/titleimg.png'),auto;*/
+}
+
+#carouselExampleInterval{
+    width: 1350px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 25px 25px 25px 25px;
+}
+
+#label{
+    margin-left: 928px;
+}
+
+.carousel-control-prev-icon{
+    background-color: black;
+    border-radius: 50px 0px 0px 50px;
+}
+.carousel-control-next-icon{
+    background-color: black;
+    border-radius: 0px 50px 50px 0px;  
+}
+.flex-container{
+    height: 100%;
+    padding: 0;
+    padding-top: 50px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
 }
 
 #canvas {

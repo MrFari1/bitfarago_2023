@@ -81,3 +81,7 @@ function popup(button) {
   var popup=document.getElementById(id)
   popup.classList.toggle("show");
 }
+
+function imgshow(){
+  document.getElementById("btncheck1").checked==true ? document.getElementById("imageslider").hidden=false:document.getElementById("imageslider").hidden=true;
+}
