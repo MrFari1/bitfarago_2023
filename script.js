@@ -4,6 +4,7 @@ class Film{
         this.ev=Ev
         this.Kategoria=Kategoria
     }
+    pont=0;
 }
 
 const filmObj={
@@ -42,26 +43,48 @@ for (let index = 0; index < 2; index++) {
     document.getElementsByClassName("dropdown-menu")[index].appendChild
 }
 
-function filteredSearch(){
-    for (let index = 0; index < 11; index++) {
-        let curr=document.getElementsByClassName("dropdown-menu")[0].children[index].children[0].children[0]
-        if (curr.checked) {
-            jo.push(curr.value)   
-        }
-    }
-    for (let index = 0; index < 11; index++) {
-        let curr=document.getElementsByClassName("dropdown-menu")[1].children[index].children[0].children[0]
-        if (curr.checked) {
-            nemjo.push(curr.value)   
-        }
-    }
+function pontAdas(category) {
+    filmek.forEach(film => {
+        film.Kategoria.forEach(kategori=>{
+            if (kategori==category) {
+                film.pont++;
+            }
+        })
+    });
+}
+
+function pontLevonas(category) {
+    filmek.forEach(film => {
+        film.Kategoria.forEach(kategori=>{
+            if (kategori==category) {
+                film.pont--;
+            }
+        })
+    });
 }
 
 
-function createFragment(img,nev) {
+function filteredSearch(){
+    let mode=document.querySelectorAll("input[type='checkbox'][id='jo']:checked")
+    mode.forEach(curr => {
+        if (curr.checked) {
+            pontAdas(curr.value)  
+        }
+    });
+    let mode2=document.querySelectorAll("input[type='checkbox'][id='rossz']:checked")
+    mode2.forEach(curr => {
+        if (curr.checked) {
+            pontLevonas(curr.value)  
+        }
+    });
+}
+
+
+function createFragment(img,nev,pont) {
     let fragment=new DocumentFragment();
     let div=document.createElement("div")
     div.id="filmCucc"
+    pont>0 ? div.style.backgroundColor="green" : pont==0? div.style.backgroundColor="orange" :div.style.backgroundColor="red"
     let kepdiv=document.createElement("div")
     kepdiv.id="filmKep"
     kepdiv.style.backgroundImage="url('kepek/"+img+".jpg"
@@ -76,27 +99,11 @@ function createFragment(img,nev) {
 
 function mainKereses() {
     filteredSearch()
-    
-    filmek.forEach(film => {
-        if (film.Kategoria.includes(jo[0])) {
-            document.getElementById("filmek").appendChild(createFragment(film.nev.split(' ').map(word => word.charAt(0).toLowerCase())
-            .join(''),film.nev))
-            console.log(filmek.indexOf(film));
-            filmek.splice(filmek.indexOf(film),1)
-        }
-    });
-    console.log(filmek);
-    filmek.forEach(film => {
-        if (!film.Kategoria.includes(nemjo[0])) {
-            document.getElementById("filmek").appendChild(createFragment(film.nev.split(' ').map(word => word.charAt(0).toLowerCase())
-            .join(''),film.nev))
-            filmek.splice(filmek.indexOf(film),1)
-        }
-    });
+    filmek.sort((a,b) => b.pont - a.pont);
     console.log(filmek);
     filmek.forEach(film => {
         document.getElementById("filmek").appendChild(createFragment(film.nev.split(' ').map(word => word.charAt(0).toLowerCase())
-        .join(''),film.nev))
+        .join(''),film.nev,film.pont))
     });
 }
 
@@ -105,7 +112,7 @@ function updateKereses() {
     const kereses = document.getElementsByTagName("input")[0].value.toLowerCase();
     const egyezes=filmek.filter(film=>film.nev.toLowerCase().includes(kereses));
     if (egyezes.length==0) {
-        document.getElementById("filmek").innerHTML="{NINCS TALÁLAT"
+        document.getElementById("filmek").innerHTML="NINCS TALÁLAT"
     } else {
         egyezes.forEach(element => {
             document.getElementById("filmek").innerHTML=element.nev
@@ -131,6 +138,7 @@ for (let i = 0; i < ul.length; i++) {
         let label = document.createElement("label");
         let checkbox = document.createElement("input");
         let li = document.createElement("li");
+        i==0? checkbox.id="jo" : checkbox.id="rossz";
         checkbox.type = "checkbox";
         checkbox.value = distinct[j];
         label.appendChild(checkbox);
@@ -138,10 +146,9 @@ for (let i = 0; i < ul.length; i++) {
         li.appendChild(label);
         ul[i].appendChild(li);
     }
+    console.log(distinct.length)
 }
-console.log(distinct.length)
 }
-
 document.addEventListener("load",loadFilter());
 
 
