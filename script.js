@@ -84,7 +84,7 @@ function createFragment(img,nev,pont) {
     let fragment=new DocumentFragment();
     let div=document.createElement("div")
     div.id="filmCucc"
-    pont>0 ? div.style.backgroundColor="green" : pont==0? div.style.backgroundColor="orange" :div.style.backgroundColor="red"
+    //pont>0 ? div.style.backgroundColor="green" : pont==0? div.style.backgroundColor="orange" :div.style.backgroundColor="red"
     let kepdiv=document.createElement("div")
     kepdiv.id="filmKep"
     kepdiv.style.backgroundImage="url('kepek/"+img+".jpg"
@@ -102,7 +102,8 @@ function mainKereses() {
     filmek.sort((a,b) => b.pont - a.pont);
     console.log(filmek);
     filmek.forEach(film => {
-        document.getElementById("filmek").appendChild(createFragment(film.nev.split(' ').map(word => word.charAt(0).toLowerCase())
+        film.pont>0 ? div="jok" : film.pont==0? div="neutral" : div="rosszak"
+        document.getElementById(div).appendChild(createFragment(film.nev.split(' ').map(word => word.charAt(0).toLowerCase())
         .join(''),film.nev,film.pont))
     });
 }

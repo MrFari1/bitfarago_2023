@@ -4,13 +4,14 @@
     --kek: blue;
 }
 #carouselExampleInterval{
-    width: 1350px;
-    height: 600px;
+    width: 1020px;
+    height: 425px;
     display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
-    border-radius: 25px 25px 25px 25px;
+    top: 65px;
+    left: -40px;
+    border-radius: 10px;
+    margin-bottom: 70px;
 }
 
 .search{
@@ -69,16 +70,54 @@ video {
     text-shadow: 1px 1px 8px var(--fekete);
   }
 
-#filmek{
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(5,280px);
-}
-
  
 #filmKep{
     width: 150px;
     height: 150px;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+#cim{
+    margin-left: 800px;
+    font-size: 50px;
+    color: white;
+}
+
+
+#jok, #neutral, #rosszak{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(5,280px);
+}
+
+#jok{
+    margin-left: 120px;
+    margin-top: 40px;
+    margin-right: 120px;
+    background-color: RGBA(9, 158, 22, 0.7);
+}
+#neutral{
+    margin-left: 120px;
+    margin-top: 40px;
+    margin-right: 120px;
+    background-color: RGBA(245, 222, 71, 0.7);
+}
+#rosszak{
+    margin-left: 120px;
+    margin-top: 40px;
+    margin-right: 120px;
+    background-color: RGBA(212, 23, 23, 0.7);
+}
+
+body{
+    background-image: url('kepek/background.jfif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+}
+
+.navbar{
+    margin-left: 50px;
+    margin-right: 50px;
 }
