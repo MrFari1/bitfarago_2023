@@ -14,8 +14,17 @@ body{
     border-radius: 25px 25px 25px 25px;
 }
 
+#bi{
+    display: flex;
+    justify-content: space-evenly;
+}
+
 #label{
     margin-left: 928px;
+}
+
+#backto{
+    width: 100% !important;
 }
 
 .carousel-control-prev-icon{
