@@ -1,0 +1,49 @@
+input{
+    background-color: gray;
+    height: 100px;
+    width: 180px;
+}
+
+#bal{
+    float: left;   
+    background-image: url("filmhatter.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 1080px;
+
+}
+
+#jobb{
+    float: right;
+    background-image: url("markolohatter.avif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 1080px;
+}
+
+#bal form{
+    float: right;
+}
+
+#jobb form{
+    float: left;
+}
+
+
+#bal input{
+    border-radius: 20px 0px 0px 20px;
+}
+
+#jobb input{
+    border-radius: 0px 20px 20px 0px;
+}
+
+#bal input:hover{
+    opacity: 0.5;
+}
+
+#jobb input:hover{
+    opacity: 0.5;
+}
