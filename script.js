@@ -1,5 +1,6 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+var show = new Array();
 let radius = canvas.height / 2;
 ctx.translate(radius, radius);
 radius = radius * 0.90
@@ -76,12 +77,34 @@ function drawHand(ctx, pos, length, width) {
 }
 
 function popup(button) {
+  show.length>0?vmi2():vmi(button);
+  console.log(show.length);
+}
+
+function vmi2(){
+  console.log("ada");
+ show.forEach(e => {
+    if(e.classList.contains("show"))
+      e.classList.toggle("show");
+      console.log(e);
+  });
+  show = [];
+}
+
+function vmi(button){
+  console.log("dsadsa");
   let id=String(button.id)
   id=id.slice(5)
   var popup=document.getElementById(id)
   popup.classList.toggle("show");
+  show = document.querySelectorAll("span[class ='popuptext show']");
+  console.log(show);
 }
-
 function imgshow(){
   document.getElementById("btncheck1").checked==true ? document.getElementById("imageslider").hidden=false:document.getElementById("imageslider").hidden=true;
 }
+
+var ckik = document.getElementById("ckik");
+ckik.addEventListener("click", function() {
+    window.open("https://ckik.hu", "_blank");
+});
