@@ -27,6 +27,7 @@ const filmObj={
 
 var jo=new Array();
 var nemjo=new Array();
+var nyomott = 0;
 const filmek=new Array();
 
 for (let index = 1; index < 16; index++) {
@@ -98,14 +99,22 @@ function createFragment(img,nev,pont) {
 
 
 function mainKereses() {
-    filteredSearch()
-    filmek.sort((a,b) => b.pont - a.pont);
-    console.log(filmek);
-    filmek.forEach(film => {
-        film.pont>0 ? div="jok" : film.pont==0? div="neutral" : div="rosszak"
-        document.getElementById(div).appendChild(createFragment(film.nev.split(' ').map(word => word.charAt(0).toLowerCase())
-        .join(''),film.nev,film.pont))
-    });
+    if(nyomott==0){
+
+        filteredSearch()
+        filmek.sort((a,b) => b.pont - a.pont);
+        console.log(filmek);
+        filmek.forEach(film => {
+            film.pont>0 ? div="jok" : film.pont==0? div="neutral" : div="rosszak"
+            document.getElementById(div).appendChild(createFragment(film.nev.split(' ').map(word => word.charAt(0).toLowerCase())
+            .join(''),film.nev,film.pont))
+        });
+        nyomott++;
+    }
+    else if(nyomott==1){
+        nyomott=0
+        document.getElementById("filmek").innerHTML =""; 
+    }
 }
 
 function updateKereses() {
